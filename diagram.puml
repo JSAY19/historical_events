@@ -1,0 +1,63 @@
+@startuml
+!theme plain
+
+class EventContainer {
+  - _events: List[HistoricalEvent]
+  + __init__()
+  + add(event: HistoricalEvent): void
+  + remove(condition: Callable): int
+  + print_all(): void
+}
+
+class HistoricalEvent {
+  # name: str
+  # date: str
+  + __init__(name: str, date: str)
+  + __str__(): str
+  + __repr__(): str
+}
+
+class Battle {
+  - place: str
+  - type: str
+  + __init__(name: str, date: str, place: str)
+  + __str__(): str
+  + __repr__(): str
+}
+
+class Treaty {
+  - parties: str
+  - type: str
+  + __init__(name: str, date: str, parties: str)
+  + __str__(): str
+  + __repr__(): str
+}
+
+' Наследование
+HistoricalEvent <|-- Battle
+HistoricalEvent <|-- Treaty
+
+' Агрегация (контейнер хранит события)
+EventContainer o-- HistoricalEvent : хранит
+
+note right of HistoricalEvent
+  Базовый класс для исторических событий
+  Общие параметры:
+  - Название (name)
+  - Дата (date)
+end note
+
+note right of Battle
+  Производный класс для битв
+  Дополнительный параметр:
+  - Место (place)
+end note
+
+note right of Treaty
+  Производный класс для договоров
+  Дополнительный параметр:
+  - Стороны (parties)
+end note
+
+@enduml
+
