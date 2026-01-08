@@ -14,13 +14,13 @@ def main():
         print("Использование: python main.py <имя_файла>")
         print("Пример: python main.py commands.txt")
         sys.exit(1)
-    
+
     filename = sys.argv[1]
-    
+
     # Создаем контейнер и парсер
     container = EventContainer()
     parser = CommandParser(container)
-    
+
     # Обрабатываем файл с командами
     print(f"Обработка файла: {filename}")
     print("-" * 60)
@@ -31,4 +31,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
