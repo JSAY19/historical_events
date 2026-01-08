@@ -3,19 +3,10 @@
 
 STDOUT:
 container.py:14: note: By default the bodies of untyped functions are not checked, consider using --check-untyped-defs  [annotation-unchecked]
-command_parser.py:56: error: Incompatible types in assignment (expression has type "Treaty", variable has type "Battle")  [assignment]
-command_parser.py:122: error: Item "None" of "Match[str] | None" has no attribute "group"  [union-attr]
-command_parser.py:128: error: Item "None" of "Match[str] | None" has no attribute "group"  [union-attr]
-command_parser.py:134: error: Item "None" of "Match[str] | None" has no attribute "group"  [union-attr]
-command_parser.py:140: error: Item "None" of "Match[str] | None" has no attribute "group"  [union-attr]
-command_parser.py:146: error: Item "None" of "Match[str] | None" has no attribute "group"  [union-attr]
-command_parser.py:152: error: Item "None" of "Match[str] | None" has no attribute "group"  [union-attr]
-command_parser.py:158: error: Item "None" of "Match[str] | None" has no attribute "group"  [union-attr]
-command_parser.py:163: error: Item "None" of "Match[str] | None" has no attribute "group"  [union-attr]
-Found 9 errors in 1 file (checked 4 source files)
+Success: no issues found in 4 source files
 
 
 STDERR:
 
 
-Код возврата: 1
+Код возврата: 0

@@ -50,6 +50,7 @@ class CommandParser:
         specific_param = parts[3]
 
         try:
+            event: HistoricalEvent
             if event_type == "Битва":
                 event = Battle(name, date, specific_param)
             elif event_type == "Договор":
@@ -62,7 +63,7 @@ class CommandParser:
             print(f"Добавлено событие: {event}")
             return True
 
-        except Exception as e:
+        except (ValueError, TypeError) as e:
             print(f"Ошибка при добавлении события: {e}")
             return False
 
@@ -99,7 +100,7 @@ class CommandParser:
             print(f"Удалено событий: {removed_count}")
             return True
 
-        except Exception as e:
+        except (ValueError, AttributeError) as e:
             print(f"Ошибка при удалении событий: {e}")
             return False
 
@@ -114,54 +115,56 @@ class CommandParser:
         Returns:
             Функция-предикат для проверки события
         """
+        # pylint: disable=too-many-return-statements
+        # Множественные return необходимы для разных типов условий
         # Удаляем кавычки из строки условия для упрощения парсинга
         condition_str = condition_str.strip()
 
         # Проверка на равенство типа
-        if re.match(r'type\s*==\s*"([^"]+)"', condition_str):
-            match = re.match(r'type\s*==\s*"([^"]+)"', condition_str)
+        match = re.match(r'type\s*==\s*"([^"]+)"', condition_str)
+        if match:
             target_type = match.group(1)
             return lambda e: hasattr(e, 'type') and e.type == target_type
 
         # Проверка на равенство названия
-        if re.match(r'name\s*==\s*"([^"]+)"', condition_str):
-            match = re.match(r'name\s*==\s*"([^"]+)"', condition_str)
+        match = re.match(r'name\s*==\s*"([^"]+)"', condition_str)
+        if match:
             target_name = match.group(1)
             return lambda e: e.name == target_name
 
         # Проверка на равенство даты
-        if re.match(r'date\s*==\s*"([^"]+)"', condition_str):
-            match = re.match(r'date\s*==\s*"([^"]+)"', condition_str)
+        match = re.match(r'date\s*==\s*"([^"]+)"', condition_str)
+        if match:
             target_date = match.group(1)
             return lambda e: e.date == target_date
 
         # Проверка на равенство места (для битв)
-        if re.match(r'place\s*==\s*"([^"]+)"', condition_str):
-            match = re.match(r'place\s*==\s*"([^"]+)"', condition_str)
+        match = re.match(r'place\s*==\s*"([^"]+)"', condition_str)
+        if match:
             target_place = match.group(1)
             return lambda e: isinstance(e, Battle) and e.place == target_place
 
         # Проверка на равенство сторон (для договоров)
-        if re.match(r'parties\s*==\s*"([^"]+)"', condition_str):
-            match = re.match(r'parties\s*==\s*"([^"]+)"', condition_str)
+        match = re.match(r'parties\s*==\s*"([^"]+)"', condition_str)
+        if match:
             target_parties = match.group(1)
             return lambda e: isinstance(
                 e, Treaty) and e.parties == target_parties
 
         # Проверка на вхождение подстроки в название
-        if re.match(r'name\s+contains\s+"([^"]+)"', condition_str):
-            match = re.match(r'name\s+contains\s+"([^"]+)"', condition_str)
+        match = re.match(r'name\s+contains\s+"([^"]+)"', condition_str)
+        if match:
             substring = match.group(1)
             return lambda e: substring.lower() in e.name.lower()
 
         # Проверка на сравнение дат (лексикографическое)
-        if re.match(r'date\s*>\s*"([^"]+)"', condition_str):
-            match = re.match(r'date\s*>\s*"([^"]+)"', condition_str)
+        match = re.match(r'date\s*>\s*"([^"]+)"', condition_str)
+        if match:
             target_date = match.group(1)
             return lambda e: e.date > target_date
 
-        if re.match(r'date\s*<\s*"([^"]+)"', condition_str):
-            match = re.match(r'date\s*<\s*"([^"]+)"', condition_str)
+        match = re.match(r'date\s*<\s*"([^"]+)"', condition_str)
+        if match:
             target_date = match.group(1)
             return lambda e: e.date < target_date
 
@@ -202,5 +205,5 @@ class CommandParser:
 
         except FileNotFoundError:
             print(f"Ошибка: Файл '{filename}' не найден.")
-        except Exception as e:
+        except (IOError, UnicodeDecodeError) as e:
             print(f"Ошибка при обработке файла: {e}")
