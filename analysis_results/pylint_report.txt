@@ -1,0 +1,71 @@
+Команда: pylint main.py historical_event.py container.py command_parser.py --output-format=text
+================================================================================
+
+STDOUT:
+************* Module main
+main.py:17:0: C0303: Trailing whitespace (trailing-whitespace)
+main.py:19:0: C0303: Trailing whitespace (trailing-whitespace)
+main.py:23:0: C0303: Trailing whitespace (trailing-whitespace)
+main.py:34:0: C0305: Trailing newlines (trailing-newlines)
+************* Module historical_event
+historical_event.py:9:0: C0303: Trailing whitespace (trailing-whitespace)
+historical_event.py:20:0: C0303: Trailing whitespace (trailing-whitespace)
+historical_event.py:24:0: C0303: Trailing whitespace (trailing-whitespace)
+historical_event.py:32:0: C0303: Trailing whitespace (trailing-whitespace)
+historical_event.py:45:0: C0303: Trailing whitespace (trailing-whitespace)
+historical_event.py:49:0: C0303: Trailing whitespace (trailing-whitespace)
+historical_event.py:57:0: C0303: Trailing whitespace (trailing-whitespace)
+historical_event.py:70:0: C0303: Trailing whitespace (trailing-whitespace)
+historical_event.py:74:0: C0303: Trailing whitespace (trailing-whitespace)
+historical_event.py:78:0: C0305: Trailing newlines (trailing-newlines)
+************* Module container
+container.py:11:0: C0303: Trailing whitespace (trailing-whitespace)
+container.py:15:0: C0303: Trailing whitespace (trailing-whitespace)
+container.py:24:0: C0303: Trailing whitespace (trailing-whitespace)
+container.py:39:0: C0303: Trailing whitespace (trailing-whitespace)
+container.py:45:0: C0303: Trailing whitespace (trailing-whitespace)
+container.py:51:0: C0305: Trailing newlines (trailing-newlines)
+************* Module command_parser
+command_parser.py:13:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:22:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:39:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:42:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:46:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:51:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:60:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:64:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:68:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:95:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:101:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:105:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:118:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:124:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:130:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:136:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:142:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:148:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:154:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:160:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:165:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:168:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:180:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:184:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:188:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:192:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:196:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:199:0: C0303: Trailing whitespace (trailing-whitespace)
+command_parser.py:204:0: C0305: Trailing newlines (trailing-newlines)
+command_parser.py:65:15: W0718: Catching too general exception Exception (broad-exception-caught)
+command_parser.py:102:15: W0718: Catching too general exception Exception (broad-exception-caught)
+command_parser.py:106:4: R0911: Too many return statements (8/6) (too-many-return-statements)
+command_parser.py:202:15: W0718: Catching too general exception Exception (broad-exception-caught)
+
+------------------------------------------------------------------
+Your code has been rated at 6.65/10 (previous run: 6.65/10, +0.00)
+
+
+
+STDERR:
+
+
+Код возврата: 28

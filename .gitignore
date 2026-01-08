@@ -45,6 +45,6 @@ cabal.sandbox.config
 .DS_Store
 Thumbs.db
 
-# Документы Word (опционально, можно убрать если нужно)
+# Документы Word (опционально)
 # *.docx
 
