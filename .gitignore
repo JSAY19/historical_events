@@ -48,3 +48,10 @@ Thumbs.db
 # Документы Word (опционально)
 # *.docx
 
+# Testing
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+*.cover
+.hypothesis/
