@@ -1,0 +1,95 @@
+@startuml
+!theme plain
+
+class EventContainer {
+  - _events: List[HistoricalEvent]
+  + __init__()
+  + add(event: HistoricalEvent): None
+  + remove(condition: Callable[[HistoricalEvent], bool]): int
+  + print_all(): None
+}
+
+class HistoricalEvent {
+  # name: str
+  # date: str
+  + __init__(name: str, date: str)
+  + __str__(): str
+  + __repr__(): str
+}
+
+class Battle {
+  - place: str
+  - type: str
+  + __init__(name: str, date: str, place: str)
+  + __str__(): str
+  + __repr__(): str
+}
+
+class Treaty {
+  - parties: str
+  - type: str
+  + __init__(name: str, date: str, parties: str)
+  + __str__(): str
+  + __repr__(): str
+}
+
+class CommandParser {
+  - container: EventContainer
+  + __init__(container: EventContainer)
+  + parse_add_command(line: str): bool
+  + parse_rem_command(line: str): bool
+  - _parse_condition(condition_str: str): Callable[[HistoricalEvent], bool]
+  + process_file(filename: str): None
+}
+
+' Наследование
+HistoricalEvent <|-- Battle
+HistoricalEvent <|-- Treaty
+
+' Агрегация (контейнер хранит события)
+EventContainer o-- HistoricalEvent : хранит
+
+' Композиция (парсер использует контейнер)
+CommandParser *-- EventContainer : использует
+
+' Зависимость (парсер создает события)
+CommandParser ..> Battle : создает
+CommandParser ..> Treaty : создает
+
+note right of HistoricalEvent
+  Базовый класс для исторических событий
+  Общие параметры:
+  - Название (name)
+  - Дата (date)
+end note
+
+note right of Battle
+  Производный класс для битв
+  Дополнительный параметр:
+  - Место (place)
+end note
+
+note right of Treaty
+  Производный класс для договоров
+  Дополнительный параметр:
+  - Стороны (parties)
+end note
+
+note right of EventContainer
+  Контейнер для хранения событий
+  Методы:
+  - add: добавление события
+  - remove: удаление по условию
+  - print_all: вывод всех событий
+end note
+
+note right of CommandParser
+  Парсер команд из файла
+  Обрабатывает команды:
+  - ADD: добавление события
+  - REM: удаление по условию
+  - PRINT: вывод всех событий
+end note
+
+@enduml
+
